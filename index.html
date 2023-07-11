@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Game.css">
+    <title>X O Game</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h2><span>X O</span> Game</h2>
+        </div>
+        <div class="cover">
+        <div class="content">
+            <span class="box" onclick="game(1)"></span>
+            <span class="box" onclick="game(2)"></span>
+            <span class="box" onclick="game(3)"></span>
+            <span class="box" onclick="game(4)"></span>
+            <span class="box" onclick="game(5)"></span>
+            <span class="box" onclick="game(6)"></span>
+            <span class="box" onclick="game(7)"></span>
+            <span class="box" onclick="game(8)"></span>
+            <span class="box" onclick="game(9)"></span>
+        </div>
+    </div>
+        <div class="start">START</div>
+    </div>
+    <script>
+
+
+        var title = document.querySelector('.title');
+        var strat = document.querySelector('.start');
+        var span = document.querySelectorAll(".box");
+        var turn = "x";
+        var span = document.querySelectorAll(".box");
+        var title = document.querySelector('.title');
+        var i = 0;
+
+        function winner ( ){
+            if( span[0].innerHTML == span[1].innerHTML && span[1].innerHTML == span[2].innerHTML && span[0].innerHTML !=''){
+            title.innerHTML = `${span[0].innerHTML} `+ `is win`;
+            win(0,1 ,2);
+        }
+        if( span[3].innerHTML == span[4].innerHTML && span[4].innerHTML == span[5].innerHTML && span[3].innerHTML !=''){
+            title.innerHTML = `${span[3].innerHTML} `+ `is win`;
+            win(3,4,5);
+        }
+        if( span[6].innerHTML == span[7].innerHTML && span[7].innerHTML == span[8].innerHTML && span[6].innerHTML !=''){
+            title.innerHTML = `${span[6].innerHTML} `+ `is win`;
+            win(6,7,8);
+        }
+        if( span[0].innerHTML == span[3].innerHTML && span[3].innerHTML == span[6].innerHTML && span[0].innerHTML !=''){
+            title.innerHTML = `${span[0].innerHTMLn} `+ `is win`;
+            win(0,3,6);
+        }
+        if( span[1].innerHTML == span[4].innerHTML && span[4].innerHTML == span[7].innerHTML && span[1].innerHTML !==''){
+            title.innerHTML = `${span[1].innerHTML} `+ `is win`;
+            win(1,4,7);
+        }
+        if( span[2].innerHTML == span[5].innerHTML && span[5].innerHTML == span[8].innerHTML && span[2].innerHTML !==''){
+            title.innerHTML = `${span[2].innerHTML} `+ `is win`;
+            win(2,5,8);
+        }
+        if( span[0].innerHTML == span[4].innerHTML && span[4].innerHTML == span[8].innerHTML && span[0].innerHTML !==''){
+            title.innerHTML = `${span[0].innerHTML} `+ `is win`;
+            win(0,4,8);
+        }
+        if( span[2].innerHTML == span[4].innerHTML && span[4].innerHTML == span[6].innerHTML && span[2].innerHTML !==''){
+            title.innerHTML = `${span[2].innerHTML} `+ `is win`;
+            win(2,4,6);
+        }
+       
+        }
+        
+       function win (num1 , num2 , num3 ){
+           span[num1].style.backgroundColor = "black";
+           span[num2].style.backgroundColor = "black";
+           span[num3].style.backgroundColor = "black";
+           span[num1].style.color = "white";
+           span[num2].style.color = "white";
+           span[num3].style.color = "white";
+           setInterval(() => {
+               title.innerHTML += ".";
+           }, 1000);
+           setTimeout(() => {
+               location.reload()
+           }, 3000);
+       }
+
+
+
+
+       function game(e){
+        
+        if( turn ==="x" && span[e-1].innerHTML =='' ){
+           span[e-1].innerHTML = turn;
+           turn = "o";
+        }
+        else if( turn ==="o" && span[e-1].innerHTML =='' ){
+            span[e-1].innerHTML = turn;
+            turn = "x";
+        }
+        winner();
+        }
+       
+       
+    </script>
+</body>
+</html>
